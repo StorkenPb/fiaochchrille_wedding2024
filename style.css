@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed&display=swap");
+
 :root {
   --c-background: #d3d2d0; /**/
   --c-textblock: #87756a; /*545e4a*/ /*87756a*/
+  --c-tooltip-background: #d3d2d0;
   --c-green2: #545e4a;
   --c-link: #392518;
   --c-link-visited: #fff;
@@ -28,7 +31,7 @@ body {
 h1,
 h2,
 h5 {
-  font-family: 'Roboto Condensed';
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 h1 {
@@ -64,7 +67,10 @@ h5 {
   /*background-image: linear-gradient(rgba(160, 160, 160, 0.2), rgba(0, 0, 0, 0.5)),
     url(https://images.unsplash.com/photo-1474871412913-50d61c720df9?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);*/
 
-    background-image: linear-gradient(rgba(160, 160, 160, 0.2), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(
+      rgba(160, 160, 160, 0.2),
+      rgba(0, 0, 0, 0.5)
+    ),
     url(https://images.unsplash.com/photo-1552160793-cbaf3ebcba72?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
 
   color: white;
@@ -211,7 +217,7 @@ section {
   color: var(--c-text);
 }
 
-.flex-box  ul {
+.flex-box ul {
   color: var(--c-text2);
   max-width: 1200px;
   display: flex;
@@ -227,6 +233,45 @@ section {
   flex: 1;
 }
 
+.tooltip {
+  position: relative;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 1em 0;
+}
+
+.tooltip .tooltip-text {
+  text-decoration: none;
+  cursor: text;
+  visibility: hidden;
+  width: 220px;
+  background-color: var(--c-tooltip-background);
+  text-align: center;
+  padding: 0.5em 0.2em;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 1;
+  top: 90%;
+  left: 50%;
+  margin-left: -40px;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.tooltip .tooltip-text::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;
+  left: 15%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--c-tooltip-background) transparent;
+}
+
 @media screen and (max-width: 1540px) {
   .flex-box {
     padding: 0 0 2em 0;
@@ -234,6 +279,15 @@ section {
   .flex-box li {
     flex: auto;
     width: calc(50% - 1em);
+  }
+
+  .flex-box li h5 {
+    padding: 0.5em 0.5em 0 0.5em;
+  }
+
+  .flex-box li p {
+    padding: 0 1em;
+    margin: 1em 0;
   }
 
   .flex-box li img {
@@ -294,14 +348,14 @@ button {
   padding: 0;
 }
 
-.fix-button {
+#buttonOSA {
   position: fixed;
   right: 0.2em;
   top: 80dvh;
   z-index: 1000;
 }
 
-.fix-button a {
+#buttonOSA a {
   text-decoration: none;
   text-transform: uppercase;
   background-color: var(--c-text);
@@ -321,61 +375,3 @@ button {
   transform: translate(-50%, -50%);
   z-index: 1000;
 }
-
-
-/*
-
-.flex-container {
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1;
-  justify-content: center;
-  flex-direction: row;
-  gap: 1em;
-}
-
-.flex-box {
-  min-width: 280px;
-  width: 20%;
-  height: auto;
-  flex: 1;
-  background-color: rgb(255, 255, 255);
-  text-align: left;
-  color: var(--c-link);
-}
-
-.flex-box h5 {
-  padding: 1em 0 0 1em;
-}
-
-.flex-box p {
-  font-size: 0.8em;
-  padding: 0 2em 1em 2em;
-}
-
-.flex-box img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-}
-
-.flex-box a {
-  color: var(--c-link);
-}
-
-.box-img {
-  width: 100%;
-  height: 200px;
-  background: url(https://metromode.se/mmImages/1/2023/06/stor-guide-kladkoder-pa-brollop-dam-och-herr__mmcompress-normal__.png)
-    no-repeat center / cover;
-}
-
-.box-img2 {
-  width: 100%;
-  height: 200px;
-  background: url(https://images.unsplash.com/photo-1621354598022-16599af1b8b2?q=80&w=460&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
-    no-repeat center / cover;
-}*/
